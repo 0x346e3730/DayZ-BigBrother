@@ -1,21 +1,21 @@
 const Tail = require('tail').Tail;
 const Discord = require('discord.js');
 const Constants = require('discord.js/src/util/Constants');
-const { TOKEN, LOG_LOCATION CHANNEL_NAME  } = require('./config.json');
+const { TOKEN, LOG_LOCATION, CHANNEL_NAME  } = require('./config.json');
 const client = new Discord.Client();
 
 let logsQueue = [];
 let logBeingTreated = false;
 
 client.once('ready', () => {
+    client.user.setActivity('Made with ❤ by GrosTon1');
+
     const tail = new Tail(LOG_LOCATION);
 
     tail.on("line", (data) => {
         logsQueue.push(getLog(data));
         treatLogs();
-    });
-
-    tail.on("error", function(error) {
+    }).on("error", function(error) {
         console.log('ERROR: ', error);
     });
 });
