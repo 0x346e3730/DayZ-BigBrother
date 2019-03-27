@@ -8,7 +8,7 @@ npm i
 vim config.json
 node bot.js
 ```
-`vim config.json` means you need to edit the config.json files with your bot application's token, the location of your ADM logfile and the target text channel.
+`vim config.json` means you need to edit the config.json files to suit you.
 
 ### You need :
 * NodeJS
