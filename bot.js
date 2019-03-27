@@ -1,7 +1,7 @@
 const Tail = require('tail').Tail;
 const Discord = require('discord.js');
 const Constants = require('discord.js/src/util/Constants');
-const { TOKEN, LOG_LOCATION, CHANNEL_NAME  } = require('./config.json');
+const { TOKEN, LOG_LOCATION, GUILD_ID, CHANNEL_NAME  } = require('./config.json');
 const client = new Discord.Client();
 
 let logsQueue = [];
@@ -55,7 +55,7 @@ function treatLogs() {
 
     logBeingTreated = true;
     const log = logsQueue.shift();
-    const guild = client.guilds.get('440111023089909770');
+    const guild = client.guilds.get(GUILD_ID);
     const channel = guild.channels.find(channel => CHANNEL_NAME === channel.name)
 
     channel.fetchMessage(channel.lastMessageID)
