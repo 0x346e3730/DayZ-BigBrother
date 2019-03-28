@@ -10,7 +10,9 @@ let logBeingTreated = false;
 client.once('ready', () => {
     client.user.setActivity('Made with ❤ by GrosTon1');
 
-    const tail = new Tail(LOG_LOCATION);
+    const tail = new Tail(LOG_LOCATION, {
+        useWatchFile: true
+    });
 
     tail.on("line", (data) => {
         logsQueue.push(getLog(data));
